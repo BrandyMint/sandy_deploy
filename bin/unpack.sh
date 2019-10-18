@@ -1,20 +1,21 @@
 #!/bin/env bash
 source "$(dirname $0)/config.sh"
 
-UNPACK_DIR=${RELEASES_DIR}`date -Iseconds`
+test -d $RELEASES_DIR || mkdir $RELEASES_DIR
+UNPACK_DIR=${RELEASES_DIR}/`date -Iseconds`
 
-file=$1
+echo $($1 || $LATEST_BUILD)
+file=$1 || $LATEST_BUILD
 
 if [ -z "$file"]; then
-  echo 'Select release package (.zip) to unpack'
-  exit 1
+  file=$LATEST_BUILD
 fi
 
 echo "Unpacking $file into $UNPACK_DIR.."
 
 mkdir $UNPACK_DIR
 
-unzip $file -d $UNPACK_DIR
+unzip $file -d $UNPACK_DIR > $LOG_DIR/unpacking.log
 
 echo "Switch current"
 rm -f $CURRENT_DIR

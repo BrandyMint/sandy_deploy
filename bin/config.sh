@@ -7,6 +7,9 @@ DOWNLOAD_DIR="${PROJECT_DIR}/downloads"
 CONFIG_DIR="${PROJECT_DIR}/config"
 CURRENT_DIR="${PROJECT_DIR}/current"
 RELEASES_DIR="${PROJECT_DIR}/releases"
+LOG_DIR="${PROJECT_DIR}/log"
+
+test -d ${LOG_DIR} || mkdir ${LOG_DIR}
 
 LATEST_BUILD="${DOWNLOAD_DIR}/latest.zip"
 
