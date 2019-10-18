@@ -1,3 +1,4 @@
-./downloads/*
-./releases/*
-./current/*
+/downloads/*
+/releases/*
+/vendor/*
+/current
