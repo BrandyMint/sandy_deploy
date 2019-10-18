@@ -2,3 +2,4 @@
 /releases/*
 /vendor/*
 /current
+*.swp
