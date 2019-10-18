@@ -3,8 +3,12 @@
 PROJECT_DIR=$(pwd $(dirname $(readlink -f $0))/../)
 echo "Hello! I'm Sandy deployer! I live in ${PROJECT_DIR}"
 
-DOWNLOAD_DIR="${PROJECT_DIR}/downloads/"
+DOWNLOAD_DIR="${PROJECT_DIR}/downloads"
 CONFIG_DIR="${PROJECT_DIR}/config"
+CURRENT_DIR="${PROJECT_DIR}/current"
+RELEASES_DIR="${PROJECT_DIR}/releases"
+
+LATEST_BUILD="${DOWNLOAD_DIR}/latest.zip"
 
 SERVER="konstantin@office.brandymint.ru"
 SERVER_BUILDS_PATH="/home/konstantin/SandyAppBuilds/"

@@ -1,7 +1,7 @@
 #!/bin/env bash
+source "$(dirname $0)/config.sh"
 
-CURRENT_DIR='./current'
-UNPACK_DIR='./releases/'`date -Iseconds`
+UNPACK_DIR=${RELEASES_DIR}`date -Iseconds`
 
 file=$1
 
