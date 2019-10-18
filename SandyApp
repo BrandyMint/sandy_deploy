@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=/home/sandy/SandyApp/start
+Name=SandyApp
+Comment=Start Sandy Sunday Application
+Icon=/home/sandy/SandyApp/assets/sandy.png
