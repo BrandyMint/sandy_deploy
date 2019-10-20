@@ -5,7 +5,7 @@ echo
 ./bin/kill.sh
 ./bin/pull_latest.sh && ./bin/unpack.sh
 
-echo "Run"
+echo "$(date -R): Run"
 ./current/run.sh
 
-echo "Exit with status $?"
+echo "$(date -R): Exit with status $?"
