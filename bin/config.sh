@@ -1,6 +1,9 @@
 #!/bin/env bash
 
-PROJECT_DIR=$(pwd $(dirname $(readlink -f $0))/../)
+# Так он возвращает путь самого верхнего скрипта из которого был запущен
+# PROJECT_DIR=$(pwd $(dirname $(readlink -f $0))/../)
+
+PROJECT_DIR=/home/sandy/SandyApp
 echo "Hello! I'm Sandy deployer! I live in ${PROJECT_DIR}"
 
 DOWNLOAD_DIR="${PROJECT_DIR}/downloads"
