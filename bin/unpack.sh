@@ -2,7 +2,9 @@
 source "$(dirname $0)/config.sh"
 
 test -d $RELEASES_DIR || mkdir $RELEASES_DIR
-UNPACK_DIR=${RELEASES_DIR}/`date -Iseconds`
+
+PACK_NAME=$(ls -o downloads/latest.zip | grep -oE '[^/]+$')
+UNPACK_DIR=${RELEASES_DIR}/${PACK_NAME}-`date -Iseconds`
 
 echo $($1 || $LATEST_BUILD)
 file=$1 || $LATEST_BUILD
