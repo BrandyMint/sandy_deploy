@@ -1,5 +1,5 @@
 #!/bin/env bash
-source "$(dirname $0)/bin/config.sh"
+source "$(dirname $0)/bin/_config.sh"
 
 cd $PROJECT_DIR
 

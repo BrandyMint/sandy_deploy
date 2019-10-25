@@ -1,5 +1,5 @@
 #!/bin/env bash
-source "$(dirname $0)/config.sh"
+source "$(dirname $0)/_config.sh"
 
 BACKUP_DIR=${CONFIG_DIR}/backup
 echo "Backup current config into ${BACKUP_DIR}"

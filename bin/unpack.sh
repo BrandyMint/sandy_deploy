@@ -1,5 +1,5 @@
 #!/bin/env bash
-source "$(dirname $0)/config.sh"
+source "$(dirname $0)/_config.sh"
 
 test -d $RELEASES_DIR || mkdir $RELEASES_DIR
 

@@ -1,5 +1,5 @@
 #!/bin/env bash
-source "$(dirname $0)/config.sh"
+source "$(dirname $0)/_config.sh"
 
 test -d $DOWNLOAD_DIR || mkdir $DOWNLOAD_DIR
 NEWEST_FILE=$(ssh $SERVER "ls -c $SERVER_BUILDS_PATH" | head -1)

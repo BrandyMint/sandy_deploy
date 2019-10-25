@@ -5,6 +5,6 @@ Type=Application
 Terminal=true
 Icon[en_US]=start
 Name[en_US]=Sandy
-Exec=/bin/bash -c /home/sandy/SandyApp/start
+Exec=/bin/bash -c /home/sandy/SandyApp/bin/start.sh
 Name=Sandy
 Icon=start
