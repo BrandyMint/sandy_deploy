@@ -39,3 +39,23 @@
 1) выходишь из этой и из цикла перезапуска (ctrl-c ctrl-c)
 2) Запускаешь терминал, идешь в папку ~/SandyApp
 3) В ней есть папка realeases, там лежит релизы, заходишь в любой и запускаешь от туда
+
+# Подготовка оборудования
+
+```
+adduser sandy
+cd /home/sandy
+hostname sandy3
+# Setup local DNS
+git clone git@github.com:BrandyMint/sandy_deploy.git
+# Setup VPN
+```
+
+## Настройка DNS
+
+```
+root@sandy2:~/# cat /etc/systemd/resolved.conf.d/sandy.conf
+[Resolve]
+Domains=sandynet sandysunday.ru
+```
+
