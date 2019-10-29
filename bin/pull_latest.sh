@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 source "$(dirname $0)/_config.sh"
 
 test -d $DOWNLOAD_DIR || mkdir $DOWNLOAD_DIR

@@ -31,7 +31,7 @@
 Деплой новой версии (скачает последнюю версию с FTP, распакует и развернет в `./current`):
 
 ```
-> ./bin/pull_latest.sh && ./bin/unpack.sh 
+> make
 ```
 
 ## Ручное переключение версии
@@ -59,3 +59,11 @@ root@sandy2:~/# cat /etc/systemd/resolved.conf.d/sandy.conf
 Domains=sandynet sandysunday.ru
 ```
 
+### Дать доступ к серверу обновлений
+
+```
+ssh-keygen
+```
+
+# Файл ~/.ssh/id_rsa.pub скопировать в домашку konstantine на office
+```
