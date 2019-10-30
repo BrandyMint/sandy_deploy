@@ -13,6 +13,9 @@
 
 ### Основные
 
+* Установить `Ubuntu 19.04`
+* Выключить screensaver и включить автологин `sandy`
+* Установить librealsense так - https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md
 * `./bin/run.sh` - останавливает все текущие приложения, скачивает последний апдейт и запускает его.
 * `./bin/pull_latest.sh` - скачивает послединй релиз из `${SERVER}${SERVER_BUILDS_PATH}` в `./downloads` и делает на него симлинк вида `./downloads/latest.zip`.
 * `./bin/unpack.sh` - распаковывает последний релиз из `./downloads/latest.zip` в `./releases/ДАТА-ВРЕМЯ-ИМЯ_ПАКЕТА`.
