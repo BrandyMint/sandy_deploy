@@ -3,4 +3,5 @@
 /vendor/*
 /current
 /log/*
+/tmp/*
 *.swp
