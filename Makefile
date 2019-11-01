@@ -1,7 +1,7 @@
 PROJECT_DIR:=~/sandy_deploy
 
 TMP_DIR:=${PROJECT_DIR}/tmp
-CONFIG_DIR:=${PROJECT_DIR}/config
+CONFIG_DIR:=~/.config/unity3d/Darkkon/sandbox
 CURRENT_DIR:=${PROJECT_DIR}/current
 RELEASES_DIR:=${PROJECT_DIR}/releases
 LOG_DIR:=${PROJECT_DIR}/log
