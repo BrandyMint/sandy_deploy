@@ -60,7 +60,9 @@
 
 * Установить `Ubuntu 19.10`
 * Добвить пользователя с именем `sandy`
-* Выключить screensaver и включить автологин `sandy`
+* Включить автологин `sandy`
+* Выключить screensaver - (`Settings` -> `Power`)
+* Выключить screenlock - (`Settings` -> `Privacy`)
 * Выключить автообновление Ubuntu
 * Установить librealsense так - https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md
 
