@@ -58,10 +58,13 @@
 
 # Подготовка оборудования
 
-* Установить `Ubuntu 19.04`
+* Установить `Ubuntu 19.10`
+* Добвить пользователя с именем `sandy`
 * Выключить screensaver и включить автологин `sandy`
 * Выключить автообновление Ubuntu
 * Установить librealsense так - https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md
+
+## Установка автоматического развертывания
 
 ```
 adduser sandy
