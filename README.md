@@ -64,7 +64,7 @@
 * Выключить screensaver - (`Settings` -> `Power`)
 * Выключить screenlock - (`Settings` -> `Privacy`)
 * Выключить автообновление Ubuntu
-* Установить librealsense так - https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md
+* Установить librealsense так - https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md (если dkms будет ругаться, его можно не ставить)
 
 ## Установка автоматического развертывания
 
