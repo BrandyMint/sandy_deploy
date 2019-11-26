@@ -65,6 +65,7 @@
 * Выключить screenlock - (`Settings` -> `Privacy`)
 * Выключить автообновление Ubuntu
 * Установить librealsense так - https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md (если dkms будет ругаться, его можно не ставить)
+* Установить ssh-server: `apt-get install openssh-server`
 
 ## Установка автоматического развертывания
 
