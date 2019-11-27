@@ -67,6 +67,10 @@
 * Установить librealsense так - https://github.com/IntelRealSense/librealsense/blob/master/doc/distribution_linux.md (если dkms будет ругаться, его можно не ставить)
 * Установить ssh-server: `apt-get install openssh-server`
 
+## Возможные проблемы
+
+* [PCIe Bus error severity=Corrected](https://www.linux.org.ru/forum/linux-hardware/12585679?cid=13444394)
+
 ## Установка автоматического развертывания
 
 ```
