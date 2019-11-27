@@ -58,7 +58,7 @@
 
 # Подготовка оборудования
 
-* Установить `Ubuntu 19.10`
+* Установить [`Ubuntu 18.04 LTS`](https://ubuntu.com/download/desktop/thank-you?country=RU&version=18.04.3&architecture=amd64)
 * Добвить пользователя с именем `sandy`
 * Включить автологин `sandy`
 * Выключить screensaver - (`Settings` -> `Power`)
