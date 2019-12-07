@@ -43,7 +43,9 @@ download:
 	$(eval LATEST_PATH=$(shell $(GET_LATEST_PATH)))
 	$(eval LATEST_NAME=$(notdir $(LATEST_PATH)))
 	@echo "Последний доступный релиз: $(LATEST_NAME), качаю.."
-	@scp $(SERVER):$(LATEST_PATH) $(TMP_DIR)/
+#	@scp $(SERVER):$(LATEST_PATH) $(TMP_DIR)/
+# with rsync ssh we can see progress and dont redownload if its equals
+	@rsync --progress -e ssh $(SERVER):$(LATEST_PATH) $(TMP_DIR)/
 	@rm -f $(LATEST_DOWNLOADED_PACK)
 	@ln -s $(TMP_DIR)/$(LATEST_NAME) $(LATEST_DOWNLOADED_PACK)
 
