@@ -26,7 +26,7 @@ watch: stop_all
 
 stop_all:
 	@echo 'Убиваю все запущенные приложения'
-	@ps axfww | grep sandbox.x86_64 | grep -v grep | awk '{ print $1 }' | xargs -r kill -9
+	@ps axfww | grep sandbox.x86-64 | grep -v grep | awk '{ print $1 }' | xargs -r kill -9
 
 run: stop_all
 	@echo "Запускаю версию $(CURRENT_VERSION)"
