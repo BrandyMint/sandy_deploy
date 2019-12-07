@@ -11,7 +11,7 @@ UNPACK_LOG:=${LOG_DIR}/unpacking.log
 CONFIG_BACKUP_DIR=${LOG_DIR}/config_backup-$(shell date -Iseconds) 
 
 LATEST_DOWNLOADED_PACK:=${TMP_DIR}/latest.zip
-CURRENT_VERSION:=$(shell cat $(CURRENT_DIR)/version)
+CURRENT_VERSION:=$$(cat $(CURRENT_DIR)/version)
 
 SERVER:=konstantin@office.brandymint.ru
 SERVER_BUILDS_PATH:=/home/konstantin/SandyAppBuilds/
@@ -57,7 +57,7 @@ unpack:
 	@unzip $(LATEST_DOWNLOADED_PACK) -d $(UNPACK_DIR) > $(UNPACK_LOG)
 	@rm -f $(CURRENT_DIR)
 	@ln -s $(UNPACK_DIR) $(CURRENT_DIR)
-	@echo 'Развернул версию $(CURRENT_VERSION)'
+	@echo "Развернул версию $(CURRENT_VERSION)"
 
 backup_config:
 	@mkdir ${CONFIG_BACKUP_DIR}
