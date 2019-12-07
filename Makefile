@@ -1,4 +1,6 @@
 PROJECT_DIR:=~/sandy_deploy
+PACK_PREFIX:=sandbox-linux-
+PACK_SUFFIX:=.zip
 
 TMP_DIR:=${PROJECT_DIR}/tmp
 CONFIG_DIR:=~/.config/unity3d/Darkkon/sandbox
@@ -15,8 +17,7 @@ SERVER:=konstantin@office.brandymint.ru
 SERVER_BUILDS_PATH:=/home/konstantin/SandyAppBuilds/
 SERVER_LOGS_PATH:=/home/konstantin/logs/
 
-NEWEST_FILE:=`ssh $(SERVER) "ls -c $(SERVER_BUILDS_PATH)" | head -1`
-GET_LATEST_NAME:=ssh $(SERVER) "ls -c $(SERVER_BUILDS_PATH)" | head -1
+GET_LATEST_PATH:=ssh $(SERVER) "ls -c $(SERVER_BUILDS_PATH)$(PACK_PREFIX)*$(PACK_SUFFIX) | head -1"
 
 all: update watch
 
@@ -39,11 +40,12 @@ update: download unpack
 
 download:
 	@echo "Ищу последний релиз.."
-	$(eval LATEST=$(shell $(GET_LATEST_NAME)))
-	@echo "Последний доступный релиз: $(LATEST), качаю.."
-	@scp $(SERVER):$(SERVER_BUILDS_PATH)$(LATEST) $(TMP_DIR)/
+	$(eval LATEST_PATH=$(shell $(GET_LATEST_PATH)))
+	$(eval LATEST_NAME=$(notdir $(LATEST_PATH)))
+	@echo "Последний доступный релиз: $(LATEST_NAME), качаю.."
+	@scp $(SERVER):$(LATEST_PATH) $(TMP_DIR)/
 	@rm -f $(LATEST_DOWNLOADED_PACK)
-	@ln -s $(TMP_DIR)/$(LATEST) $(LATEST_DOWNLOADED_PACK)
+	@ln -s $(TMP_DIR)/$(LATEST_NAME) $(LATEST_DOWNLOADED_PACK)
 
 unpack:
 	$(eval PACK_NAME=$(shell ls -o $(LATEST_DOWNLOADED_PACK) | grep -oE '[^/]+$$' | sed 's/.zip//' ))
