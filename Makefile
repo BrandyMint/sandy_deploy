@@ -36,12 +36,26 @@ stop_all:
 	@ps axfww | grep sandbox.x86-64 | grep -v grep | awk '{ print $1 }' | xargs -r kill -9
 
 run: stop_all
-	@echo "Запускаю версию $(CURRENT_VERSION)"
-	./current/run.sh
+	@echo "Запускаю версию $(CURRENT_VERSION)"; \
+	$(CURRENT_DIR)/run.sh || \
+	( \
+		EXIT_CODE=$$?; \
+	 	echo "Завершен с кодом $$EXIT_CODE"; \
+	 	cd $(PROJECT_DIR); \
+	 	LOG_MESSAGE=$(TMP_DIR)/message.txt; \
+	 	echo "EXIT_CODE=$$EXIT_CODE" > $$LOG_MESSAGE; \
+	 	make report LOG_PREFIX=!crash- LOG_MESSAGE=$$LOG_MESSAGE; \
+		exit $$EXIT_CODE; \
+	)
 
 report:
-	@scp -r $(CONFIG_DIR)/ $(SERVER):$(SERVER_LOGS_PATH)$(NEW_LOG)
-	@echo $(NEW_LOG)
+	@echo "Отправляю лог.."
+	$(eval LOG_NAME=$(LOG_PREFIX)$(NEW_LOG))
+	scp -r $(CONFIG_DIR)/ $(SERVER):$(SERVER_LOGS_PATH)$(LOG_NAME)
+ifneq ($(LOG_MESSAGE), )
+	scp -r $(LOG_MESSAGE) $(SERVER):$(SERVER_LOGS_PATH)$(LOG_NAME)
+endif
+	@echo $(LOG_NAME)
 
 update: download unpack
 
