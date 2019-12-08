@@ -1,6 +1,7 @@
 PROJECT_DIR:=~/sandy_deploy
 PACK_PREFIX:=sandbox-linux-
 PACK_SUFFIX:=.zip
+INSTALL_DIRS:= ~/Desktop ~/Рабочий\ стол ~/.local/share/applications/
 
 TMP_DIR:=${PROJECT_DIR}/tmp
 CONFIG_DIR:=~/.config/unity3d/Darkkon/sandbox
@@ -20,6 +21,11 @@ SERVER_LOGS_PATH:=/home/konstantin/logs/
 GET_LATEST_PATH:=ssh $(SERVER) "ls -c $(SERVER_BUILDS_PATH)$(PACK_PREFIX)*$(PACK_SUFFIX) | head -1"
 
 all: update watch
+
+install:
+	@for dir in $(INSTALL_DIRS) ; do \
+        cp -vf $(PROJECT_DIR)/*.desktop --target-directory "$$dir" 2>/dev/null; \
+    done
 
 watch: stop_all
 	@echo "Запускаю версию $(CURRENT_VERSION)"
