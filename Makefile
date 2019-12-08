@@ -28,9 +28,8 @@ install:
         cp -vf $(PROJECT_DIR)/*.desktop --target-directory "$$dir" 2>/dev/null; \
     done
 
-watch: stop_all
-	@echo "Запускаю версию $(CURRENT_VERSION)"
-	watch -b -n 1 /bin/bash -c ./current/run.sh
+watch:
+	watch -b -n 1 "cd $(PROJECT_DIR) && make run"
 
 stop_all:
 	@echo 'Убиваю все запущенные приложения'
