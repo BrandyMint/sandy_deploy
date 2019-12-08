@@ -57,6 +57,8 @@ download:
 
 unpack:
 	$(eval PACK_NAME=$(shell ls -o $(LATEST_DOWNLOADED_PACK) | grep -oE '[^/]+$$' | sed 's/.zip//' ))
+# keep only last 3 unpacks with current version
+	@ls -dc ${RELEASES_DIR}/$(PACK_NAME)* | tail -n +4 | xargs rm -rf --
 	$(eval UNPACK_DIR=${RELEASES_DIR}/${PACK_NAME}-$(shell date -Iseconds))
 	@mkdir $(UNPACK_DIR)
 	@echo "Распаковываю в $(UNPACK_DIR) и линкую в $(CURRENT_DIR)"
