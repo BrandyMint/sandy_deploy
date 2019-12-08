@@ -17,6 +17,7 @@ CURRENT_VERSION:=$$(cat $(CURRENT_DIR)/version)
 SERVER:=konstantin@office.brandymint.ru
 SERVER_BUILDS_PATH:=/home/konstantin/SandyAppBuilds/
 SERVER_LOGS_PATH:=/home/konstantin/logs/
+NEW_LOG:=$(shell echo $$(hostname)-$$(date '+%Y-%m-%d-%H:%M:%S'))
 
 GET_LATEST_PATH:=ssh $(SERVER) "ls -c $(SERVER_BUILDS_PATH)$(PACK_PREFIX)*$(PACK_SUFFIX) | head -1"
 
@@ -40,7 +41,8 @@ run: stop_all
 	./current/run.sh
 
 report:
-	scp -r config/ $(SERVER):$(SERVER_LOGS_PATH)$(hostname)-$(date '+%Y-%m-%d-%H:%M:%S')
+	@scp -r $(CONFIG_DIR)/ $(SERVER):$(SERVER_LOGS_PATH)$(NEW_LOG)
+	@echo $(NEW_LOG)
 
 update: download unpack
 
