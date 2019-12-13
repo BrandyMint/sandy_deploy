@@ -19,7 +19,7 @@ SERVER_BUILDS_PATH:=/home/konstantin/SandyAppBuilds/
 SERVER_LOGS_PATH:=/home/konstantin/logs/
 NEW_LOG:=$(shell echo $$(hostname)-$$(date '+%Y-%m-%d-%H:%M:%S'))
 
-GET_LATEST_PATH:=ssh $(SERVER) "ls -c $(SERVER_BUILDS_PATH)$(PACK_PREFIX)*$(PACK_SUFFIX) | head -1"
+LATEST_PATH:=$(shell ssh $(SERVER) "ls -c $(SERVER_BUILDS_PATH)$(PACK_PREFIX)*$(PACK_SUFFIX) | head -1")
 
 all: update watch
 
@@ -29,7 +29,7 @@ install:
     done
 
 watch:
-	watch -b -n 1 "cd $(PROJECT_DIR) && make run"
+	@watch -b -n 1 "cd $(PROJECT_DIR) && make run"
 
 stop_all:
 	@echo 'Убиваю все запущенные приложения'
@@ -61,14 +61,19 @@ update: download unpack
 
 download:
 	@echo "Ищу последний релиз.."
-	$(eval LATEST_PATH=$(shell $(GET_LATEST_PATH)))
 	$(eval LATEST_NAME=$(notdir $(LATEST_PATH)))
-	@echo "Последний доступный релиз: $(LATEST_NAME), качаю.."
 #	@scp $(SERVER):$(LATEST_PATH) $(TMP_DIR)/
 # with rsync ssh we can see progress and dont redownload if its equals
-	@rsync --progress -e ssh $(SERVER):$(LATEST_PATH) $(TMP_DIR)/
-	@rm -f $(LATEST_DOWNLOADED_PACK)
-	@ln -s $(TMP_DIR)/$(LATEST_NAME) $(LATEST_DOWNLOADED_PACK)
+ifeq ($(LATEST_PATH), )
+	@echo "Сервер недоступен, попробуйте еще раз"
+else
+	@echo "Последний доступный релиз: $(LATEST_NAME), качаю.."
+	@(	\
+		rsync --progress -e ssh $(SERVER):$(LATEST_PATH) $(TMP_DIR)/ && \
+		rm -f $(LATEST_DOWNLOADED_PACK) && \
+		ln -s $(TMP_DIR)/$(LATEST_NAME) $(LATEST_DOWNLOADED_PACK) \
+	) || echo "Не удалось загрузить новую версию, попробуйте еще раз"
+endif
 
 unpack:
 	$(eval PACK_NAME=$(shell ls -o $(LATEST_DOWNLOADED_PACK) | grep -oE '[^/]+$$' | sed 's/.zip//' ))
