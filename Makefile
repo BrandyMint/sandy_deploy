@@ -14,12 +14,12 @@ CONFIG_BACKUP_DIR=${LOG_DIR}/config_backup-$(shell date -Iseconds)
 LATEST_DOWNLOADED_PACK:=${TMP_DIR}/latest.zip
 CURRENT_VERSION:=$$(cat $(CURRENT_DIR)/version)
 
-SERVER:=konstantin@office.brandymint.ru
-SERVER_BUILDS_PATH:=/home/konstantin/SandyAppBuilds/
-SERVER_LOGS_PATH:=/home/konstantin/logs/
+SERVER:=sandyapp@sandysunday.ru
+SERVER_BUILDS_PATH:=/home/sandyapp/SandyAppBuilds/linux
+SERVER_LOGS_PATH:=/home/sandyapp/logs/
 NEW_LOG:=$(shell echo $$(hostname)-$$(date '+%Y-%m-%d-%H:%M:%S'))
 
-LATEST_PATH:=$(shell ssh $(SERVER) "ls -c $(SERVER_BUILDS_PATH)$(PACK_PREFIX)*$(PACK_SUFFIX) | head -1")
+LATEST_PATH:=$(shell ssh $(SERVER) "ls -c $(SERVER_BUILDS_PATH)/* | head -1")
 
 all: update watch
 
