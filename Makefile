@@ -13,7 +13,7 @@ LATEST_DOWNLOADED_PACK:=${TMP_DIR}/latest.zip
 CURRENT_VERSION:=$$(cat $(CURRENT_DIR)/version)
 
 SERVER:=sandyapp@sandysunday.ru
-SERVER_BUILDS_PATH:=/home/sandyapp/SandyAppBuilds/linux
+SERVER_BUILDS_PATH:=/data/SandyAppBuilds/linux
 SERVER_LOGS_PATH:=/home/sandyapp/logs/
 NEW_LOG:=$(shell echo $$(hostname)-$$(date '+%Y-%m-%d-%H:%M:%S'))
 
